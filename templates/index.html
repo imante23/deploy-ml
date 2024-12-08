@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Precios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predicción de Precio de Casas</h1>
+        <form action="/predict" method="post">
+            <label for="Tamaño_m2">Tamaño (m²):</label>
+            <input type="number" id="Tamaño_m2" name="Tamaño_m2" required>
+
+            <label for="Habitaciones">Habitaciones:</label>
+            <input type="number" id="Habitaciones" name="Habitaciones" required>
+
+            <label for="Distancia_centro_km">Distancia al centro (km):</label>
+            <input type="number" id="Distancia_centro_km" name="Distancia_centro_km" required>
+
+            <button type="submit">Obtener Predicción</button>
+        </form>
+        
+        {% if prediccion %}
+        <div class="result">
+            <h2>Precio Predicho: {{ prediccion }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
